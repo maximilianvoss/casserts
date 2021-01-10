@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef ACLL_CASSERTS_H
-#define ACLL_CASSERTS_H
+#ifndef CASSERTS_CASSERTS_H
+#define CASSERTS_CASSERTS_H
 
 #include <string.h>
 #include <stdio.h>
