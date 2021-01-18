@@ -67,4 +67,11 @@
         printf("Expected that %p is not %p\n", VALUE1, VALUE2);\
         return 1;\
     }
+
+#define ASSERTPTREQUAL(VALUE1, VALUE2)\
+    if ( VALUE1 != VALUE2 ) {\
+        printf("Expected that %p is %p\n", VALUE1, VALUE2);\
+        return 1;\
+    }
+
 #endif
