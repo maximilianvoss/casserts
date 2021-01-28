@@ -21,57 +21,59 @@
 #include <stdio.h>
 
 #define TESTCALL(TESTNAME, TESTMETHOD, DATA)\
-    printf("\nTest case:\t%s\n", TESTNAME);\
-    if ( argv[1] == NULL ) \
+    if ( argv[1] == NULL ) {\
+        printf("\nTest case:\t%s\n", TESTNAME);\
         TESTMETHOD(DATA);\
-    else\
-        if (!strcmp(argv[1], TESTNAME))\
-            return TESTMETHOD(DATA);
+    } else {\
+        if (!strcmp(argv[1], TESTNAME)) {\
+            printf("\nTest case:\t%s\n", TESTNAME);\
+            return TESTMETHOD(DATA);\
+        }\
+    }
 
 #define ASSERTSTR(EXPECTED, ACTUAL)\
-    printf("Expected: \t%s\nActual: \t%s\n\n", EXPECTED, ACTUAL);\
+    printf("\nExpected: \t%s\nActual: \t%s\n", EXPECTED, ACTUAL);\
     if (strcmp(EXPECTED, ACTUAL))\
-        return 1;
+        exit(1);
 
 #define ASSERTINT(EXPECTED, ACTUAL)\
-    printf("Expected: \t%d\nActual: \t%d\n\n", EXPECTED, ACTUAL);\
+    printf("\nExpected: \t%d\nActual: \t%d\n", EXPECTED, ACTUAL);\
     if (EXPECTED != ACTUAL)\
-        return 1;
+        exit(1);
 
 #define ASSERTLONG(EXPECTED, ACTUAL)\
-    printf("Expected: \t%ld\nActual: \t%ld\n\n", EXPECTED, ACTUAL);\
+    printf("\nExpected: \t%ld\nActual: \t%ld\n", EXPECTED, ACTUAL);\
     if (EXPECTED != ACTUAL)\
-        return 1;
+        exit(1);
 
 #define ASSERTNOTNULL(EXPECTED)\
     if (EXPECTED == NULL) {\
-        printf("Expected to be NOT NULL\n");\
-        return 1;\
+        printf("\nExpected to be NOT NULL\n");\
+        exit(1);\
     }
 
 #define ASSERTNULL(EXPECTED)\
     if (EXPECTED != NULL) {\
-        printf("Expected to be NULL\n");\
-        return 1;\
+        printf("\nExpected to be NULL\n");\
+        exit(1);\
     }
 
 #define ASSERTFILEEXISTS(PATH)\
-    printf("Expects file to exist: %s\n", PATH);\
     if ( ! file_exists(PATH) ) {\
-        printf("File: %s doesn't exist\n", PATH);\
-        return 1;\
+        printf("\nFile: %s doesn't exist\n", PATH);\
+        exit(1);\
     }
 
 #define ASSERTPTRNOTEQUAL(VALUE1, VALUE2)\
     if ( VALUE1 == VALUE2 ) {\
-        printf("Expected that %p is not %p\n", VALUE1, VALUE2);\
-        return 1;\
+        printf("\nExpected that %p is not %p\n", VALUE1, VALUE2);\
+        exit(1);\
     }
 
 #define ASSERTPTREQUAL(VALUE1, VALUE2)\
     if ( VALUE1 != VALUE2 ) {\
-        printf("Expected that %p is %p\n", VALUE1, VALUE2);\
-        return 1;\
+        printf("\'nExpected that %p is %p\n", VALUE1, VALUE2);\
+        exit(1);\
     }
 
 #endif
