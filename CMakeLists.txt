@@ -5,8 +5,6 @@ set(CMAKE_C_STANDARD 99)
 set(CMAKE_INSTALL_PREFIX /usr)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH true)
 
-if (NOT TARGET casserts)
-    # Install
-    install(FILES casserts.h DESTINATION include)
-endif ()
+# Install
+install(FILES casserts.h DESTINATION include)
 
